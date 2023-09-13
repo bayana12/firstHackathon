@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+      
+    <div id="start" class="d-none">
+          <!--* NAVBAR START -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">myDiary</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#start">Главное</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li> -->
+
+              <li class="nav-item">
+                <form class="d-flex" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Поиск"
+                    aria-label="Search"
+                    id="search"
+                  />
+                  <!-- <button class="btn btn-outline-success" type="submit">
+                    Поиск
+                  </button> -->
+                </form>
+                <!-- <a class="nav-link disabled">Disabled</a> -->
+              </li>
+            </ul>
+            <div class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Функции
+              </a>
+              <ul class="dropdown-menu">
+                <!-- <li>
+                    
+                  <a class="dropdown-item" href="#" id="myAcc">Мой аккаунт</a>
+                </li> -->
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    lsid="newPost"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    >Новый пост</a
+                  >
+                </li>
+                
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                    
+                  <a class="dropdown-item" href="#" id="logout">Выйти</a>
+                </li>
+             
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- *NAVBAR END  -->
+<!-- <img src="./assets/горы.jpg" class="img-fluid" alt="..." width=100%> -->
+      <!-- *LIST -->
+      <div class="container">
+        <div
+          id="post-list"
+          class="d-flex flex-wrap justify-content-around"
+        ></div>
+      </div>
+      <!--* LIST END  -->
+      <!-- pagination START  -->
+       <nav aria-label="Page navigation example" class="my-3">
+      <ul class="pagination justify-content-center">
+        <li class="page-item prev">
+          <a class="page-link" id="prev" href="#">назад</a>
+        </li>
+        <div class="pagination-list d-flex"></div>
+        <li class="page-item next" id="next"><a class="page-link" href="#">след</a></li>
+      </ul>
+    </nav>
+      <!-- pagination END  -->
+
+      <!--* POST START  -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Новый пост</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="w-100">
+                <label for="city" class="fs-5 fw-bold">Город</label>
+                <input
+                  type="text"
+                  id="city"
+                  class="text-start input-group-text mb-2 w-100"
+                  placeholder="город"
+                />
+              </div>
+              <div class="w-100">
+                <label for="country" class="fs-5 fw-bold">Страна</label>
+                <input
+                  type="text"
+                  id="country"
+                  class="text-start input-group-text mb-4 w-100"
+                  placeholder="страна"
+                />
+              </div>
+              <div class="w-100">
+                <label for="descr" class="fs-5 fw-bold">Описание</label>
+                <input
+                  type="text"
+                  id="descr"
+                  class="text-start input-group-text mb-4 w-100"
+                  placeholder="описание"
+                />
+                <div class="w-100">
+                  <label for="image" class="fs-5 fw-bold">Изображение</label>
+                  <input
+                    type="text"
+                    id="image"
+                    class="text-start input-group-text mb-4 w-100"
+                    placeholder="ссылка"
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-close"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрыть
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="btn-save"
+                    data-bs-dismiss="modal"
+                  >
+                    Сохранить
+                  </button>
+                </div>
+                <!--! npx json-server -w db.json -p 8000 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- POST END -->
+    
+    <!-- MODAL FOR POST START  -->
+      <div
+        class="modal fade"
+        id="exampleModal1"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Редактировать пост</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="w-100">
+                <label for="city" class="fs-5 fw-bold">Город</label>
+                <input
+                  type="text"
+                  id="cityEdit"
+                  class="text-start input-group-text mb-2 w-100"
+                  placeholder="город"
+                />
+              </div>
+              <div class="w-100">
+                <label for="country" class="fs-5 fw-bold">Страна</label>
+                <input
+                  type="text"
+                  id="countryEdit"
+                  class="text-start input-group-text mb-4 w-100"
+                  placeholder="страна"
+                />
+              </div>
+              <div class="w-100">
+                <label for="descr" class="fs-5 fw-bold">Описание</label>
+                <input
+                  type="text"
+                  id="descrEdit"
+                  class="text-start input-group-text mb-4 w-100"
+                  placeholder="описание"
+                />
+                <div class="w-100">
+                  <label for="image" class="fs-5 fw-bold">Изображение</label>
+                  <input
+                    type="text"
+                    id="imageEdit"
+                    class="text-start input-group-text mb-4 w-100"
+                    placeholder="ссылка"
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-close"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрыть
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="btn-edit-save"
+                    data-bs-dismiss="modal"
+                  >
+                    Сохранить
+                  </button>
+                </div>
+                <!--! npx json-server -w db.json -p 8000 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--* NAVBAR END -->
+    <!-- class="container justify-content-center align-items-center text-center" -->
+
+    <!--* ACCOUNT START -->
+    <div
+      class="btnsLog"
+      style="
+        background-image: url(./assets/горы.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+      "
+    >
+      <h1 class="pt-5">Дневник</h1>
+      <h1>Путешественника</h1>
+      <div class="d-flex flex-column text-center align-items-center">
+        <a
+          class="nav-link active"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          aria-current="page"
+          href="#"
+          ><button type="button" class="btn btn-primary mx-5 mb-3 mt-5 btnlog">
+            Войти
+          </button>
+        </a>
+ 
+        <a
+          class="nav-link active"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal2"
+          href="#"
+          ><button type="button" class="btn btn-primary mx-5 mb-5 btnlog">
+            Регистрация
+          </button></a
+        >
+      </div>
+    </div>
+    <!--* ACCOUNT END -->
+    <!-- <img src="./assets/горы.jpg" alt="" style="background-size: cover" /> -->
+    <!--*MODAL FOR REGISTER START  -->
+
+    <div
+      class="modal fade"
+      id="exampleModal2"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Создайте учетную запись
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div
+            class="modal-body d-flex justify-content-center align-items-center"
+          >
+            <form action="">
+              <input
+                type="text"
+                placeholder="username"
+                id="username"
+                class="form-control my-3"
+              />
+              <input
+                type="password"
+                placeholder="password"
+                id="password"
+                class="form-control my-3"
+              />
+              <!-- ! -->
+            </form>
+            <p>
+              Уже есть учетная запись?
+              <a
+                href="#staticBackdrop"
+                id="toLogin"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                >Войти</a
+              >
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Закрыть
+            </button>
+            <button type="button" class="btn btn-primary" id="submit">
+              Сохранить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--*MODAL FOR REGISTER END  -->
+    <!--* MODAL FOR LOGIN START  -->
+
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Вход</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div
+            class="modal-body d-flex justify-content-between align-items-center"
+          >
+            <form action="">
+              <input
+                type="text"
+                placeholder="username"
+                id="usernameSignIn"
+                class="form-control my-3"
+              />
+              <input
+                type="password"
+                placeholder="password"
+                id="passwordSignIn"
+                class="form-control my-3"
+              />
+            </form>
+            <p>
+              Нет учетной записи?
+              <a
+                href="#exampleModal2"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+                >Зарегистрируйтесь</a
+              >
+            </p>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Закрыть
+            </button>
+            <button type="submit" class="btn btn-primary" id="LogIn">
+              Войти
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--*MODAL FOR LOGIN END  -->
+
+    <script src="./main.js"></script>
+    <script src="./post.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

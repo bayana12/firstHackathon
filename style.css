@@ -1,0 +1,38 @@
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 90px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+}
+
+.btnlog {
+  height: 80px;
+  width: 350px;
+}
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: 50px;
+    font-weight: 700;
+  }
+  .btnlog {
+    height: 50px;
+    width: 300px;
+  }
+}
+
+@media all and (max-width: 458px) {
+  h1 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0 !important;
+    padding: 5px !important;
+  }
+  .btnlog {
+    height: 50px;
+    width: 300px;
+    padding: 10px !important;
+    margin-top: 0 !important;
+  }
+}
